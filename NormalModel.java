@@ -1,41 +1,52 @@
 package com.example.whatnumberamithinkingof;
 
 public class NormalModel {
+    private int numGuess;
+    private int answer;
+    private String msg;
+    private boolean gameDone;
+    private final int maxTries = 5;
 
-    public static double toDoubleNormal(String s) {
-
-        return Double.parseDouble(s);
+    public NormalModel(){
+        this.gameDone = false;
+        this.answer = (int) (Math.random() * 10 + 1);
+        this.numGuess = 1;
     }
 
-    public static double answerNormal(double guess) {
-        int tries = 5;
-        int i;
-        int number = 1 + (int)(10 * Math.random());
-        String answer = "";
+    public boolean isGameOver(){
+        return gameDone;
+    }
 
-        for (i = 0; i < tries; i++) {
-            if (guess == number) {
-                answer = "Congratulations! You guessed the number.";
-            }
-            else if (number > guess) {
-                answer = "The number is greater than " + guess;
-            }
-            else if (number < guess) {
-                answer = "The number is less than " + guess;
-            }
+    public String getMsg(){
+        return msg;
+    }
+
+    public void answerNormal(int guess) {
+        if(numGuess == maxTries){
+            msg = "Your all out of tries buddy!";
+            gameDone = true;
         }
-
-        if (i == tries) {
-            answer = "You have exhausted " + tries + " trials. The number was " + number;
+       if(gameDone){
+           msg = "The game is over, you lose!";
         }
-        double response = Double.parseDouble(answer);
-        return response;
-
+       else if (guess == answer){
+           if(numGuess == 1)
+           {
+               msg = String.format("You guessed the right number in the first try!");
+           }
+           else{
+               msg = String.format("You guessed the right number in %d tries!", numGuess);
+           }
+           gameDone = true;
+       }
+       else{
+           if(guess < answer){
+               msg = "Your guess is too low!";
+           }
+           else{
+               msg = "Your guess is too high!";
+           }
+       }
+       numGuess++;
     }
-
-    public static String formatAnswerNormal(double answer) {
-        return String.valueOf(answer);
-
-    }
-
 }

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="400dp"
-        android:text="Guess the Number between 1-10"
+        android:text="@string/normTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Please input your guess"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:hint="Input Your Guess Here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/normalGuess"
@@ -35,11 +37,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:onClick="NormalClicked"
-        android:text="Guess!"
+        android:text="@string/guessButt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/hintButton"
@@ -47,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:layout_marginEnd="300dp"
-        android:text="Hint"
+        android:text="@string/hintButtNorm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,5 +75,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/playA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Again"
+        android:onClick="playAgainClicked"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/hintButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/normalGuess" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
